@@ -91,16 +91,6 @@ spec:
       affinity:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      affinity:
-        nodeAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 1
-              preference:
-                matchExpressions:
-                  - key: {{ .Values.nodeAffinity.key }}
-                    operator: In
-                    values:
-                      {{- toYaml .Values.nodeAffinity.values | nindent 22 }}
       {{- with .Values.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
